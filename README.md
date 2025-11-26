@@ -32,71 +32,48 @@ Hugging Face skills are compatible with Claude Code, Codex, and Gemini CLI. With
 ### Claude Code
 
 1. Register the repository as a plugin marketplace:  
-   ```
-   /plugin marketplace add huggingface/skills
-   ```
+   
+```
+/plugin marketplace add huggingface/skills
+```
 
-2. In Claude Code, open  
-   **Browse and install plugins** → **huggingface-skills**  
-   (the marketplace you just added).
+2. To install a skill, run:  
+   
+```
+/plugin install <skill-folder>@huggingface-skills
+```
 
-3. Choose the folder you want  
-   (`hf-llm-trainer`, `hf_model_evaluation`, `hf_dataset_creator`, or `hf-paper-publisher`)  
-   and select **Install now**.
+For example:  
 
-4. Prefer commands?  
-   After registering the marketplace, run:  
-   ```
-   /plugin install <skill-folder>@huggingface-skills
-   ```
-   For example:  
-   ```
-   /plugin install hf-llm-trainer@huggingface-skills
-   ```
+```
+/plugin install hf-llm-trainer@huggingface-skills
+```
 
 ### Codex
 
-1. Copy or symlink this repository’s `AGENTS.md` file to your Codex profile:  
-   (default location:  
-   ```
-   ~/.codex/AGENTS.md
-   ```
-   )  
-   Or, set  
-   ```
-   CODEX_HOME=$(pwd)/.codex
-   ```
-   in your workspace to use a project-specific file.
+1. Codex will identify the skills via the `AGENTS.md` file. You can verify the instructions are loaded with:
 
-2. After updating `AGENTS.md`, run:  
-   ```
-   codex --ask-for-approval never "Summarize the current instructions."
-   ```
-   to verify the instructions are loaded.
+```
+codex --ask-for-approval never "Summarize the current instructions."
+```
 
-3. For more details, see the [Codex AGENTS guide](https://developers.openai.com/codex/guides/agents-md).
+2. For more details, see the [Codex AGENTS guide](https://developers.openai.com/codex/guides/agents-md).
 
 ### Gemini CLI
 
-1. This repo includes `gemini-extension.json`.  
-   Use it as a Gemini CLI extension.
+1. This repo includes `gemini-extension.json` to integrate with the Gemini CLI.
 
 2. Install locally:  
-   ```
-   gemini extensions install . --consent
-   ```
-   or use the GitHub URL.
 
-3. Restart Gemini CLI.  
-   The extension appears as `huggingface-skills` in  
-   ```
-   ~/.gemini/extensions
-   ```
-   Run:  
-   ```
-   gemini extensions list
-   ```
-   to verify.
+```
+gemini extensions install . --consent
+```
+
+or use the GitHub URL:
+
+```
+gemini extensions install https://github.com/huggingface/skills.git --consent
+```
 
 4. See [Gemini CLI extensions docs](https://geminicli.com/docs/extensions/#installing-an-extension) for more help.
 
