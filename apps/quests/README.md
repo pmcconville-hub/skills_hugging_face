@@ -33,7 +33,7 @@ Here's the schedule:
 | Date | Event | Link |
 |------|-------|------|
 | Dec 2 (Mon) | Week 1 Quest Released | [Evaluate a Hub Model](02_evaluate-hub-model.md) |
-| Dec 4 (Wed) | Livestream 1 | TBA |
+| Dec 4 (Wed) | Livestream 1 | [Q&A 1](https://youtube.com/live/rworGSh-Rgk?feature=share) |
 | Dec 9 (Mon) | Week 2 Quest Released | [Publish a Hub Dataset](03_publish-hub-dataset.md) |
 | Dec 11 (Wed) | Livestream 2 | TBA |
 | Dec 16 (Mon) | Week 3 Quest Released | [Supervised Fine-Tuning](04_sft-finetune-hub.md) |
