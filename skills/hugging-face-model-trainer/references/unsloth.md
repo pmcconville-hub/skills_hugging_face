@@ -7,10 +7,11 @@
 
 ## When to Use Unsloth
 
+Use unsloth if instructed to do so, or one of the following use cases applies:
+
 | Use Case | Recommendation |
 |----------|----------------|
 | Standard text LLM fine-tuning | TRL is sufficient |
-| Vision-Language Models (VLMs) | **Use Unsloth** - better VLM support |
 | Limited GPU memory | **Use Unsloth** - 60% less VRAM |
 | Need maximum speed | **Use Unsloth** - 2x faster |
 | Large models (>13B) | **Use Unsloth** - memory efficiency critical |
