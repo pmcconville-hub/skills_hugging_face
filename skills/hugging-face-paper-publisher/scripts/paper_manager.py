@@ -234,14 +234,18 @@ class PaperManager:
             before = yaml_content
             after = content
 
-        # Add paper reference section
-        paper_section = f"\n## Paper\n\n"
+        # Add paper reference section with boundary markers
+        paper_section = "\n<!-- paper-manager:start -->\n"
+        paper_section += f"## Paper\n\n"
         paper_section += f"This {'model' if 'model' in content.lower() else 'work'} is based on research presented in:\n\n"
         paper_section += f"**[View on arXiv]({arxiv_url})** | "
         paper_section += f"**[View on Hugging Face]({hf_paper_url})**\n\n"
 
         if citation:
-            paper_section += f"### Citation\n\n```bibtex\n{citation}\n```\n\n"
+            safe_citation = self._sanitize_text(citation)
+            paper_section += f"### Citation\n\n```bibtex\n{safe_citation}\n```\n\n"
+
+        paper_section += "<!-- paper-manager:end -->\n"
 
         # Insert after YAML, before main content
         updated_content = before + paper_section + after
@@ -382,14 +386,18 @@ class PaperManager:
         if format == "bibtex":
             # Generate BibTeX citation
             key = f"arxiv{arxiv_id.replace('.', '_')}"
-            authors = " and ".join(info.get("authors", ["Unknown"]))
-            title = info.get("title", "Untitled")
+            raw_authors = " and ".join(info.get("authors", ["Unknown"]))
+            raw_title = info.get("title", "Untitled")
             year = arxiv_id.split(".")[0][:2]  # Extract year from ID (simplified)
             year = f"20{year}" if int(year) < 50 else f"19{year}"
 
+            # Escape BibTeX structural characters in untrusted values
+            safe_title = raw_title.replace('{', r'\{').replace('}', r'\}')
+            safe_authors = raw_authors.replace('{', r'\{').replace('}', r'\}')
+
             citation = f"""@article{{{key},
-  title={{{title}}},
-  author={{{authors}}},
+  title={{{safe_title}}},
+  author={{{safe_authors}}},
   journal={{arXiv preprint arXiv:{arxiv_id}}},
   year={{{year}}}
 }}"""
