@@ -1,9 +1,9 @@
 ---
-name: huggingface-local
-description: Run Hugging Face language models locally with llama.cpp and GGUF on CPU, Apple Silicon, AMD/Intel GPUs, or NVIDIA. Covers GGUF quant selection, Hugging Face Hub model search with `apps=llama.cpp`, hardware-aware quant recommendations from `?local-app=llama.cpp`, extracting available `.gguf` files from the Hugging Face tree API, and local `llama-cli` inference plus `llama-server` serving.
+name: huggingface-local-models
+description: "Use to select models to run locally with llama.cpp and GGUF on CPU, Mac Metal, CUDA, or ROCm. Covers finding GGUFs, quant selection, running servers, exact GGUF file lookup, conversion, and OpenAI-compatible local serving."
 ---
 
-# Hugging Face Local with llama.cpp
+# Hugging Face Local Models
 
 Search the Hugging Face Hub for llama.cpp-compatible GGUF repos, choose the right quant, and launch the model with `llama-cli` or `llama-server`.
 
