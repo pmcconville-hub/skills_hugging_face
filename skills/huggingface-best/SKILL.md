@@ -72,6 +72,17 @@ For the top 10-15 candidate model IDs, use the `hub_repo_details` MCP tool:
 hub_repo_details(repo_ids=["org/model1", "org/model2", ...], repo_type="model")
 ```
 
+If the MCP tool is unavailable, use the REST API or CLI equivalents:
+
+```bash
+# REST API
+curl -s -H "Authorization: Bearer $(cat ~/.cache/huggingface/token)" \
+  "https://huggingface.co/api/models/org/model1" | jq '{safetensors, tags, cardData}'
+
+# CLI (hf-cli)
+hf repo info org/model1 --repo-type model
+```
+
 Extract from each response:
 - **Parameters**: `safetensors.total` → convert to B (e.g., 7_241_748_480 → "7.2B")
 - **License**: from model card tags (look for `license:apache-2.0`, `license:mit`, etc.)
